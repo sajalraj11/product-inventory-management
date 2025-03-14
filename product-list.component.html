@@ -1,0 +1,31 @@
+<div class="container">
+  <h2>Product List</h2>
+  <input type="text" [(ngModel)]="searchText" placeholder="Search products..." class="form-control mb-3">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Manufacturer</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products | filter: searchText">
+        <td>{{ product.name }}</td>
+        <td>{{ product.description }}</td>
+        <td>{{ product.manufacturer }}</td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.quantity }}</td>
+        <td>
+          <button class="btn btn-info btn-sm" (click)="viewProduct(product.id)">View</button>
+          <button class="btn btn-warning btn-sm" (click)="editProduct(product.id)">Edit</button>
+          <button class="btn btn-danger btn-sm" (click)="deleteProduct(product.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-primary" (click)="addProduct()">Add Product</button>
+</div>
